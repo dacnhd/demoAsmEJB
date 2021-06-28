@@ -29,6 +29,13 @@ public class Account {
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Credential> tokens;
 
+    public Account(String username, String passwordHash, int role, int status) {
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.role = role;
+        this.status = status;
+    }
+
     public String getRoleByName() {
         return role == 1 ? "ADMIN" : "USER";
     }
